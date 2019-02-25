@@ -12,6 +12,9 @@ on init
     mount none /system/lib64/hw/hwcomposer.sdm845.so /vendor/lib64/hw/hwcomposer.sdm845.so bind
     mount none /system/lib/hw/hwcomposer.sdm845.so /vendor/lib/hw/hwcomposer.sdm845.so bind
 
+    # Set permissions for dsp partition
+    mkdir /dsp 0771 media media
+
 on boot
     # default country code
     setprop ro.boot.wificountrycode 00
