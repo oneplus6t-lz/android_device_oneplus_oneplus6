@@ -68,6 +68,7 @@ TARGET_2ND_ARCH_VARIANT := armv8-a
 TARGET_2ND_CPU_ABI := armeabi-v7a
 TARGET_2ND_CPU_ABI2 := armeabi
 TARGET_2ND_CPU_VARIANT := kryo
+TARGET_USE_SDCLANG := true
 
 TARGET_USE_QCOM_BIONIC_OPTIMIZATION := true
 TARGET_USES_64_BIT_BINDER := true
@@ -78,7 +79,7 @@ ENABLE_SCHEDBOOST := true
 
 BOARD_KERNEL_CMDLINE := androidboot.hardware=qcom androidboot.console=ttyMSM0 video=vfb:640x400,bpp=32,memsize=3072000 msm_rtb.filter=0x237 ehci-hcd.park=3 lpm_levels.sleep_disabled=1 service_locator.enable=1 swiotlb=2048 androidboot.configfs=true androidboot.usbcontroller=a600000.dwc3 firmware_class.path=/vendor/firmware_mnt/image loop.max_part=7
 BOARD_KERNEL_CMDLINE += androidboot.avb_version=1.0 androidboot.vbmeta.avb_version=1.0
-#BOARD_KERNEL_CMDLINE += androidboot.selinux=permissive
+BOARD_KERNEL_CMDLINE += androidboot.selinux=permissive
 BOARD_KERNEL_BASE := 0x00000000
 BOARD_KERNEL_PAGESIZE := 4096
 BOARD_KERNEL_TAGS_OFFSET := 0x01E00000
@@ -120,11 +121,18 @@ TARGET_COPY_OUT_VENDOR := vendor
 #Enable DRM plugins 64 bit compilation
 TARGET_ENABLE_MEDIADRM_64 := true
 
-TARGET_QCOM_DISPLAY_VARIANT := caf-sdm845
 # Generic AOSP image does NOT support HWC1
 TARGET_USES_HWC2 := true
-# Set emulator framebuffer display device buffer count to 3
-#NUM_FRAMEBUFFER_SURFACE_BUFFERS := 3
+
+TARGET_FORCE_HWC_FOR_VIRTUAL_DISPLAYS := true
+MAX_VIRTUAL_DISPLAY_DIMENSION := 4096
+NUM_FRAMEBUFFER_SURFACE_BUFFERS := 2
+TARGET_USES_QCOM_DISPLAY_BSP := true
+TARGET_USES_COLOR_METADATA := true
+TARGET_USES_DRM_PP := true
+#Enable Wide color gamut support
+TARGET_HAS_WIDE_COLOR_DISPLAY := true
+
 
 VSYNC_EVENT_PHASE_OFFSET_NS := 2000000
 SF_VSYNC_EVENT_PHASE_OFFSET_NS := 6000000
@@ -233,16 +241,11 @@ endif
 BOARD_PROPERTY_OVERRIDES_SPLIT_ENABLED := true
 
 # selinux
-#include device/qcom/sepolicy/sepolicy.mk
-include vendor/omni/sepolicy/sepolicy.mk
+include device/qcom/sepolicy/sepolicy.mk
+include vendor/skydragon/sepolicy/sepolicy.mk
 BOARD_SEPOLICY_DIRS += $(BOARD_PATH)/sepolicy/qcom
 BOARD_PLAT_PUBLIC_SEPOLICY_DIR += $(BOARD_PATH)/sepolicy/public
 BOARD_PLAT_PRIVATE_SEPOLICY_DIR += $(BOARD_PATH)/sepolicy/private
-BOARD_PLAT_PUBLIC_SEPOLICY_DIR += \
-    device/qcom/sepolicy/public
-BOARD_PLAT_PRIVATE_SEPOLICY_DIR += \
-    device/qcom/sepolicy/private
-
 
 BOARD_SECCOMP_POLICY += $(BOARD_PATH)/seccomp_policy
 

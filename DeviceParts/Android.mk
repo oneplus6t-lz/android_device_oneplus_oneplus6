@@ -13,6 +13,7 @@ LOCAL_STATIC_ANDROID_LIBRARIES := \
 LOCAL_SRC_FILES := $(call all-java-files-under, src)
 LOCAL_PACKAGE_NAME := DeviceParts
 LOCAL_CERTIFICATE := platform
+LOCAL_PRIVATE_PLATFORM_APIS := true
 LOCAL_PRIVILEGED_MODULE := true
 LOCAL_RESOURCE_DIR := $(LOCAL_PATH)/res
 LOCAL_USE_AAPT2 := true
@@ -31,8 +32,6 @@ LOCAL_PROGUARD_ENABLED := disabled
 LOCAL_DEX_PREOPT := false
 
 include frameworks/base/packages/SettingsLib/common.mk
-
-include packages/apps/OmniLib/common.mk
 
 include $(BUILD_PACKAGE)
 

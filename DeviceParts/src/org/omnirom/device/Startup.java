@@ -49,60 +49,28 @@ public class Startup extends BroadcastReceiver {
 
     @Override
     public void onReceive(final Context context, final Intent bootintent) {
-
-        // double swipe -> music play
-        String mapping = GestureSettings.DEVICE_GESTURE_MAPPING_0;
-        String value = Settings.System.getString(context.getContentResolver(), mapping);
-        if (TextUtils.isEmpty(value)) {
-            value = AppSelectListPreference.MUSIC_PLAY_ENTRY;
-            Settings.System.putString(context.getContentResolver(), mapping, value);
-        }
-        boolean enabled = !value.equals(AppSelectListPreference.DISABLED_ENTRY);
+        String value = Settings.System.getString(context.getContentResolver(), GestureSettings.DEVICE_GESTURE_MAPPING_0);
+        boolean enabled = !TextUtils.isEmpty(value) && !value.equals(AppSelectListPreference.DISABLED_ENTRY);
         restore(getGestureFile(GestureSettings.KEY_DOUBLE_SWIPE_APP), enabled);
 
-        // circle -> camera
-        mapping = GestureSettings.DEVICE_GESTURE_MAPPING_1;
-        value = Settings.System.getString(context.getContentResolver(), mapping);
-        if (TextUtils.isEmpty(value)) {
-            value = AppSelectListPreference.CAMERA_ENTRY;
-            Settings.System.putString(context.getContentResolver(), mapping, value);
-        }
-        enabled = !value.equals(AppSelectListPreference.DISABLED_ENTRY);
+        value = Settings.System.getString(context.getContentResolver(), GestureSettings.DEVICE_GESTURE_MAPPING_1);
+        enabled = !TextUtils.isEmpty(value) && !value.equals(AppSelectListPreference.DISABLED_ENTRY);
         restore(getGestureFile(GestureSettings.KEY_CIRCLE_APP), enabled);
 
-        // down arrow -> flashlight
-        mapping = GestureSettings.DEVICE_GESTURE_MAPPING_2;
-        value = Settings.System.getString(context.getContentResolver(), mapping);
-        if (TextUtils.isEmpty(value)) {
-            value = AppSelectListPreference.TORCH_ENTRY;
-            Settings.System.putString(context.getContentResolver(), mapping, value);
-        }
-        enabled = !value.equals(AppSelectListPreference.DISABLED_ENTRY);
+        value = Settings.System.getString(context.getContentResolver(), GestureSettings.DEVICE_GESTURE_MAPPING_2);
+        enabled = !TextUtils.isEmpty(value) && !value.equals(AppSelectListPreference.DISABLED_ENTRY);
         restore(getGestureFile(GestureSettings.KEY_DOWN_ARROW_APP), enabled);
 
-        // up arrow
         value = Settings.System.getString(context.getContentResolver(), GestureSettings.DEVICE_GESTURE_MAPPING_3);
         enabled = !TextUtils.isEmpty(value) && !value.equals(AppSelectListPreference.DISABLED_ENTRY);
         restore(getGestureFile(GestureSettings.KEY_UP_ARROW_APP), enabled);
 
-        // left arrow -> music prev
-        mapping = GestureSettings.DEVICE_GESTURE_MAPPING_4;
-        value = Settings.System.getString(context.getContentResolver(), mapping);
-        if (TextUtils.isEmpty(value)) {
-            value = AppSelectListPreference.MUSIC_PREV_ENTRY;
-            Settings.System.putString(context.getContentResolver(), mapping, value);
-        }
-        enabled = !value.equals(AppSelectListPreference.DISABLED_ENTRY);
+        value = Settings.System.getString(context.getContentResolver(), GestureSettings.DEVICE_GESTURE_MAPPING_4);
+        enabled = !TextUtils.isEmpty(value) && !value.equals(AppSelectListPreference.DISABLED_ENTRY);
         restore(getGestureFile(GestureSettings.KEY_LEFT_ARROW_APP), enabled);
 
-        // right arrow -> music next
-        mapping = GestureSettings.DEVICE_GESTURE_MAPPING_5;
-        value = Settings.System.getString(context.getContentResolver(), mapping);
-        if (TextUtils.isEmpty(value)) {
-            value = AppSelectListPreference.MUSIC_NEXT_ENTRY;
-            Settings.System.putString(context.getContentResolver(), mapping, value);
-        }
-        enabled = !value.equals(AppSelectListPreference.DISABLED_ENTRY);
+        value = Settings.System.getString(context.getContentResolver(), GestureSettings.DEVICE_GESTURE_MAPPING_5);
+        enabled = !TextUtils.isEmpty(value) && !value.equals(AppSelectListPreference.DISABLED_ENTRY);
         restore(getGestureFile(GestureSettings.KEY_RIGHT_ARROW_APP), enabled);
 
         // down swipe
