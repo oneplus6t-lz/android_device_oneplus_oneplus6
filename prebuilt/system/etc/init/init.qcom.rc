@@ -142,6 +142,9 @@ on boot
     setprop vendor.camera.aux.packagelist org.omnirom.snap,com.oneplus.camera
     setprop persist.vendor.dpm.feature 11
 
+    write /sys/module/cpu_boost/parameters/input_boost_ms 20
+    write /sys/module/msm_performance/parameters/touchboost 0
+
 on post-fs
     # Vibrator
     #chown system system /sys/class/timed_output/vibrator/vtg_default
