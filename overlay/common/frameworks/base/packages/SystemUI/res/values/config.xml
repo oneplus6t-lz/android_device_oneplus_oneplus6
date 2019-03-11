@@ -33,6 +33,10 @@
     <!-- The CPUs to display in CPUInfoService view -->
     <string name="config_displayCpus" translatable="false">0,4</string>
 
+    <!-- Max visible notification icons -->
+    <integer name="config_maxVisibleNotificationIcons">4</integer>
+    <integer name="config_maxVisibleNotificationIconsWhenDark">4</integer>
+    
     <!-- Allow devices override audio panel location to the left side -->
     <bool name="config_audioPanelOnLeftSide">true</bool>
 
