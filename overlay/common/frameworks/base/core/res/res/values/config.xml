@@ -665,6 +665,9 @@
     <!-- enable support for configure max aspect ratio per app -->
     <bool name="config_haveHigherAspectRatioScreen">true</bool>
 
+    <!-- Whether device has dash charging support -->
+    <bool name="config_hasDashCharger">true</bool>
+    
     <!-- Allow automatic adjusting of the screen brightness while dozing in low power state. -->
     <bool name="config_allowAutoBrightnessWhileDozing">false</bool>
 
