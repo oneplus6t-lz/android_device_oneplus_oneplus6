@@ -41,7 +41,7 @@ public class VibratorStrengthPreference extends Preference implements
     private int mMaxValue;
     private Vibrator mVibrator;
 
-    private static final String FILE_LEVEL = "/sys/class/leds/vibrator/vmax_mv_user";
+    private static final String FILE_LEVEL = "/sys/class/leds/vibrator/vmax_mv";
     private static final long testVibrationPattern[] = {0,250};
 
     public VibratorStrengthPreference(Context context, AttributeSet attrs) {
