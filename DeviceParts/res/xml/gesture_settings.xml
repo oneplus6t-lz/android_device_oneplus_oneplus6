@@ -40,11 +40,12 @@
                     android:targetPackage="com.android.settings"
                     android:targetClass="com.android.settings.Settings$SwipeToNotificationSuggestionActivity" />
         </Preference>
-
+<!--
         <org.omnirom.device.AppSelectListPreference
             android:key="fp_long_press_gesture_app"
             android:title="@string/category_fp_long_press_gesture"
             android:persistent="false"/>
+-->
     </PreferenceCategory>
 
     <PreferenceCategory
