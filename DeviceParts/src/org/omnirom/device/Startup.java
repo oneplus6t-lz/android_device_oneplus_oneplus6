@@ -96,7 +96,6 @@ public class Startup extends BroadcastReceiver {
         // fp down swipe
         value = Settings.System.getString(context.getContentResolver(), GestureSettings.DEVICE_GESTURE_MAPPING_10);
         enabled = !TextUtils.isEmpty(value) && !value.equals(AppSelectListPreference.DISABLED_ENTRY);
-        restore(getGestureFile(GestureSettings.FP_GESTURE_LONG_PRESS_APP), enabled);
 
         SharedPreferences sharedPrefs = PreferenceManager.getDefaultSharedPreferences(context);
         enabled = sharedPrefs.getBoolean(DeviceSettings.KEY_SRGB_SWITCH, false);

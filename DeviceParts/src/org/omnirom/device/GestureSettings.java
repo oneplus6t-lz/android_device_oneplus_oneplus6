@@ -68,8 +68,6 @@ public class GestureSettings extends PreferenceFragment implements
     public static final String KEY_FP_GESTURE_CATEGORY = "key_fp_gesture_category";
     public static final String KEY_FP_GESTURE_DEFAULT_CATEGORY = "gesture_settings";
 
-    public static final String FP_GESTURE_LONG_PRESS_APP = "fp_long_press_gesture_app";
-
     public static final String DEVICE_GESTURE_MAPPING_0 = "device_gesture_mapping_0_0";
     public static final String DEVICE_GESTURE_MAPPING_1 = "device_gesture_mapping_1_0";
     public static final String DEVICE_GESTURE_MAPPING_2 = "device_gesture_mapping_2_0";
@@ -99,7 +97,6 @@ public class GestureSettings extends PreferenceFragment implements
     private AppSelectListPreference mFPUpSwipeApp;
     private AppSelectListPreference mFPRightSwipeApp;
     private AppSelectListPreference mFPLeftSwipeApp;
-    private AppSelectListPreference mFPLongPressApp;
     private PreferenceCategory fpGestures;
     private boolean mFpDownSwipe;
     private static final boolean sIsOnePlus6 = android.os.Build.MODEL.equals("ONEPLUS A6003");
@@ -175,18 +172,10 @@ public class GestureSettings extends PreferenceFragment implements
         mRightSwipeApp.setValue(value);
         mRightSwipeApp.setOnPreferenceChangeListener(this);
 
-        if (sIsOnePlus6) {
-            mFPLongPressApp = (AppSelectListPreference) findPreference(FP_GESTURE_LONG_PRESS_APP);
-            mFPLongPressApp.setEnabled(true);
-            value = Settings.System.getString(getContext().getContentResolver(), DEVICE_GESTURE_MAPPING_10);
-            mFPLongPressApp.setValue(value);
-            mFPLongPressApp.setOnPreferenceChangeListener(this);
-        } else {
-            Preference fpGestures = findPreference(KEY_FP_GESTURE_CATEGORY);
-            Preference fpGesturesDefault = findPreference(KEY_FP_GESTURE_DEFAULT_CATEGORY);
-            getPreferenceScreen().removePreference(fpGestures);
-            getPreferenceScreen().removePreference(fpGesturesDefault);
-        }
+        Preference fpGestures = findPreference(KEY_FP_GESTURE_CATEGORY);
+        Preference fpGesturesDefault = findPreference(KEY_FP_GESTURE_DEFAULT_CATEGORY);
+        getPreferenceScreen().removePreference(fpGestures);
+        getPreferenceScreen().removePreference(fpGesturesDefault);
 
         new FetchPackageInformationTask().execute();
     }
@@ -258,9 +247,6 @@ public class GestureSettings extends PreferenceFragment implements
             boolean gestureDisabled = value.equals(AppSelectListPreference.DISABLED_ENTRY);
             setGestureEnabled(KEY_RIGHT_SWIPE_APP, !gestureDisabled);
             Settings.System.putString(getContext().getContentResolver(), DEVICE_GESTURE_MAPPING_9, value);
-        } else if (preference == mFPLongPressApp) {
-            String value = (String) newValue;
-            Settings.System.putString(getContext().getContentResolver(), DEVICE_GESTURE_MAPPING_10, value);
         }
         return true;
     }
@@ -367,9 +353,6 @@ public class GestureSettings extends PreferenceFragment implements
             mUpSwipeApp.setPackageList(mInstalledPackages);
             mLeftSwipeApp.setPackageList(mInstalledPackages);
             mRightSwipeApp.setPackageList(mInstalledPackages);
-            if (sIsOnePlus6) {
-                mFPLongPressApp.setPackageList(mInstalledPackages);
-            }
         }
     }
 }
