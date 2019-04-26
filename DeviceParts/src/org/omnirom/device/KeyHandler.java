@@ -290,7 +290,7 @@ public class KeyHandler implements DeviceKeyHandler {
         mNoMan = (NotificationManager) mContext.getSystemService(Context.NOTIFICATION_SERVICE);
         mAudioManager = (AudioManager) mContext.getSystemService(Context.AUDIO_SERVICE);
         mSensorManager = (SensorManager) mContext.getSystemService(Context.SENSOR_SERVICE);
-        mTiltSensor = getSensor(mSensorManager, "oneplus.sensor.pickup");
+        mTiltSensor = getSensor(mSensorManager, "oneplus.sensor.op_motion_detect");
         if (sIsOnePlus6) {
              mPocketSensor = getSensor(mSensorManager, "oneplus.sensor.pocket");
         } else {
