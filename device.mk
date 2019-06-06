@@ -21,7 +21,7 @@
 #
 $(call inherit-product, vendor/oneplus/oneplus6/device-vendor.mk)
 $(call inherit-product, vendor/skydragon/config/phone-xxhdpi-4096-dalvik-heap.mk)
-$(call inherit-product, vendor/skydragon/config/phone-xxxhdpi-3072-hwui-memory.mk)
+$(call inherit-product, vendor/skydragon/config/phone-xxhdpi-2048-hwui-memory.mk)
 
 #from build treble includes
 PRODUCT_COPY_FILES += \
