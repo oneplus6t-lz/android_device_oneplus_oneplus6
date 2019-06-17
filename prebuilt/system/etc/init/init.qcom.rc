@@ -143,7 +143,7 @@ on boot
     chown cameraserver audio /data/vendor/omni/client_package_name
     chmod 0644 /data/vendor/omni/client_package_name
 
-    setprop vendor.camera.aux.packagelist org.omnirom.snap,com.oneplus.camera
+    setprop vendor.camera.aux.packagelist org.omnirom.snap,com.oneplus.camera,com.google.android.GoogleCamera
     setprop persist.vendor.dpm.feature 11
 
     write /sys/module/cpu_boost/parameters/input_boost_ms 20
